@@ -13,11 +13,11 @@ public final class SoldNote {
 
     /**
      * 查询销售记录
-     * @param soldId
-     * @param goodId
-     * @param saleId
-     * @param soldNumber
-     * @param soldDate
+     * @param soldId 销售id
+     * @param goodId 商品id
+     * @param saleId 售货员id
+     * @param soldNumber 销售数量
+     * @param soldDate 销售时间
      */
     public SoldNote(int soldId, int goodId, int saleId, int soldNumber, String soldDate) {
         this.soldId = soldId;

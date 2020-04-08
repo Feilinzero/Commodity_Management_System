@@ -74,7 +74,7 @@ public class GoodPage {
         if (result){
             out.println("!查询完毕!");
         }else {
-            out.println("!查询失败!");
+            out.println("!暂无商品数据,查询失败!");
         }
         //释放资源
         DbConnection.close(goodDao.getCon(),goodDao.getPre(),goodDao.getResultSet());
@@ -107,7 +107,7 @@ public class GoodPage {
             out.print("商品备注");
             String note = ScannerInfo.inputString();
             //检查输入是否合法
-            boolean check = ScannerInfo.checkAddGood(name, price, number, note);
+            boolean check = ScannerInfo.checkAddGood(name, price, number);
             if (check) {
                 //将商品信息加入商品表
                 boolean result = goodDao.addGood(name, price, number, note);
@@ -159,7 +159,7 @@ public class GoodPage {
                 out.print("要修改的商品备注");
                 String note = ScannerInfo.inputString();
                 //验证输入合法
-                boolean check = ScannerInfo.checkGood(name, price, number, note);
+                boolean check = ScannerInfo.checkGood(name, price, number);
                 if (check) {
                     out.printf("\nid=%d修改后的信息为名称=%s,单价=%5.2f,库存=%d,备注=%s\n 1.确认修改 0.放弃修改", id, name, price, number, note);
                     String chose = ScannerInfo.inputChose();
@@ -172,13 +172,10 @@ public class GoodPage {
                                 break;
                             case 1:
                                 //操作数据表,执行update语句
-                                boolean result = new GoodDao().updateGood(id, name, price, number, note);
+                                goodDao.updateGood(id, name, price, number, note);
                                 //释放资源
                                 DbConnection.close(goodDao.getCon(), goodDao.getPre(), goodDao.getResultSet());
-                                if (!result) {
-                                    //修改失败退出系统
-                                    exit(403);
-                                }
+                                //返回上级界面
                                 goodMainPage();
                                 break;
                             default:

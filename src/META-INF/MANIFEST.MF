@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: cn.dalaonp.action.MainPage
+Class-Path: hamcrest-core-1.3.jar mchange-commons-java-0.2.12.jar junit-
+ 4.12.jar c3p0-0.9.5.2.jar mssql-jdbc-8.2.2.jre8.jar
+

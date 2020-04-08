@@ -1,13 +1,12 @@
 package cn.dalaonp.action;
 
-import cn.dalaonp.dao.SoldNoteDao;
 import cn.dalaonp.dao.SalesmanDao;
+import cn.dalaonp.dao.SoldNoteDao;
 import cn.dalaonp.db.DbConnection;
 import cn.dalaonp.instance.Salesman;
 import cn.dalaonp.instance.SoldNote;
 import cn.dalaonp.tools.ScannerInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -31,7 +30,7 @@ public class BackstagePage {
         //输入账号密码,循环验证,错误3次退出系统
         if (initial){
             int count=0;
-            boolean flag = false;
+            boolean flag;
             do {
                 System.out.println("账号:");
                 String account= ScannerInfo.inputString();
@@ -81,7 +80,7 @@ public class BackstagePage {
         out.println("==========================================");
         out.println("输入指定数字进入,输入0返回上一级");
         //判断选择
-        String input = "";
+        String input;
         String rule="[0-3]";
         do {
             input = ScannerInfo.inputChose();
@@ -123,7 +122,7 @@ public class BackstagePage {
         out.println("==========================================");
         out.println("输入指定数字进入,输入0返回上一级");
         //判断选择
-        String input = "";
+        String input;
         String rule="[0-3]";
         do {
             input = ScannerInfo.inputChose();
@@ -238,7 +237,7 @@ public class BackstagePage {
      */
     private static void salesmanList() {
         SalesmanDao smDao=new SalesmanDao();
-        List<Salesman> salesmanList=new ArrayList<>();
+        List<Salesman> salesmanList;
         salesmanList = smDao.getSalesmanList();
         if (salesmanList!=null){
             for (Salesman salesman : salesmanList) {
@@ -267,7 +266,7 @@ public class BackstagePage {
         SoldNoteDao snDao=new SoldNoteDao();
         List<SoldNote> soldNoteList= snDao.getNoteList();
         out.println("=============历史销售记录=================");
-        if(soldNoteList.size()!=0&&soldNoteList!=null){
+        if(soldNoteList.size()>0){
             for (SoldNote soldNote : soldNoteList) {
                 out.println(soldNote.toString());
             }

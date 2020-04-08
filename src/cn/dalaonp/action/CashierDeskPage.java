@@ -34,7 +34,7 @@ public class CashierDeskPage {
         out.println("==========================================");
         out.println("输入指定数字进入,输入0返回上一级");
         //判断选择
-        String input = "";
+        String input;
         String rule="[0-2]";
         do {
             input = ScannerInfo.inputChose();
@@ -50,7 +50,7 @@ public class CashierDeskPage {
                         break;
                     case 2:
                         //收银找零
-                        calculateMoney(salesmanId);
+                        calculateMoney();
                         break;
                     default:
                         break;
@@ -63,9 +63,8 @@ public class CashierDeskPage {
 
     /**
      * 收银找零
-     * @param salesmanId
      */
-    private static void calculateMoney(int salesmanId) {
+    private static void calculateMoney() {
         //收银找零
         out.println("收到金额:");
         double money=ScannerInfo.inputDouble();
@@ -91,7 +90,7 @@ public class CashierDeskPage {
         //商品结算列表
         List<Good> goodList=new ArrayList<>();
         //初始化商品id和商品数量
-        int goodId = -1,goodNumber = -1;
+        int goodId,goodNumber;
         while (true){
             out.print("商品id");
             goodId=ScannerInfo.inputInt();
@@ -142,8 +141,8 @@ public class CashierDeskPage {
     /**
      * 计算商品结算列表
      *
-     * @param goodList
-     * @param salesmanId
+     * @param goodList 录入的商品列表
+     * @param salesmanId 售货员id
      */
     private static void calculateMoney(List<Good> goodList, int salesmanId) {
         GoodDao goodDao=new GoodDao();
@@ -172,12 +171,16 @@ public class CashierDeskPage {
                         break;
                     case "1":
                         //更新商品库存
-                        goodDao.updateGood(goodList);
+                        boolean result1 = goodDao.updateGood(goodList);
                         //更新销售记录
-                        goodDao.insertSoldNote(goodList,salesmanId);
+                        boolean result2 = goodDao.insertSoldNote(goodList, salesmanId);
                         //释放资源
                         DbConnection.close(goodDao.getCon(),goodDao.getPre(),goodDao.getResultSet());
-                        out.println("结算完成");
+                        if (result1&&result2){
+                            out.println("结算完成");
+                        }else {
+                            out.println("结算失败");
+                        }
                         cashierDeskMainPage();
                         break;
                     default:
@@ -230,6 +233,8 @@ public class CashierDeskPage {
                 if (flag){
                     DbConnection.close(smDao.getCon(),smDao.getPre(),smDao.getResultSet());
                     out.println("用户添加成功,进入登录界面....");
+                    //变更初始化状态
+                    initial = true;
                     loginDeskPage();
                 }else {
                     out.println("用户添加失败,返回主菜单....");

@@ -17,20 +17,21 @@ import java.sql.SQLException;
 public final class DbConnection {
     /**
      * 获取数据库连接对象
-     * @return
-     * @throws SQLException
+     * @return 返回数据库连接对象
+     * @throws SQLException 数据库连接异常
      */
     public static Connection getC3P0Con() throws SQLException {
         DataSource source=new ComboPooledDataSource("default");
-        Connection connection = source.getConnection();
+        Connection connection;
+        connection = source.getConnection();
         return connection;
     }
 
     /**
      * 释放资源
-     * @param connection
-     * @param preparedStatement
-     * @param resultSet
+     * @param connection 数据库连接对象
+     * @param preparedStatement 数据库执行对象
+     * @param resultSet 结果集对象
      */
     public static void close(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet){
         if (resultSet!=null){
@@ -45,8 +46,8 @@ public final class DbConnection {
 
     /**
      * 释放资源
-     * @param connection
-     * @param preparedStatement
+     * @param connection 数据库连接对象
+     * @param preparedStatement 数据库执行对象
      */
     public static void close(Connection connection, PreparedStatement preparedStatement){
         if (preparedStatement!=null){

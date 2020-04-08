@@ -9,11 +9,10 @@ import java.util.Scanner;
  * @author ouyangzhifei
  */
 public class ScannerInfo {
-//    private static Scanner input = new Scanner(System.in);
 
     /**
      * 菜单选择
-     * @return
+     * @return 输入的字符
      */
     public static String inputChose() {
         Scanner input = new Scanner(System.in);
@@ -23,7 +22,7 @@ public class ScannerInfo {
 
     /**
      * 输入字符串
-     * @return
+     * @return 输入的字符串
      */
     public static String inputString() {
         Scanner input = new Scanner(System.in);
@@ -33,34 +32,15 @@ public class ScannerInfo {
     }
 
     /**
-     * 输入指定范围内的字数
-     * @param words
-     * @return
-     */
-    public static String inputString(int words) {
-        Scanner input = new Scanner(System.in);
-        String string = "";
-        while (true){
-            System.out.println("请输入:");
-            string = input.nextLine();
-            if (string.length()<=words){
-                break;
-            }else {
-                System.out.println("请输入合法的");
-            }
-        }
-        return string;
-    }
-    /**
      * 输入浮点数值
-     * @return
+     * @return 输入的浮点数
      */
     public static double inputDouble() {
         Scanner input = new Scanner(System.in);
-        double number = 0;
+        double number;
         //校验规则:最高8位整数
         String regex="^[0-9]{0,8}[.]?[0-9]{0,2}$";
-        String string = "";
+        String string;
         while (true){
             System.out.println("请输入:");
             string = input.nextLine();
@@ -76,19 +56,18 @@ public class ScannerInfo {
 
     /**
      * 添加商品的校验规则
-     * @param name
-     * @param price
-     * @param number
-     * @param note
-     * @return
+     * @param name 商品名称
+     * @param price 商品单价
+     * @param number 商品数量
+     * @return 合法返回true
      */
-    public static boolean checkAddGood(String name, double price, int number, String note) {
+    public static boolean checkAddGood(String name, double price, int number) {
         if (name.isEmpty()){
             System.out.println("!商品名称不能为空!");
             return false;
         }
         //商品名称不能重复
-        if (!new GoodDao().checkGoodName(name)){
+        if (new GoodDao().checkGoodName(name)){
             System.out.println("!商品已存在!");
             return false;
         }
@@ -100,21 +79,17 @@ public class ScannerInfo {
             System.out.println("!添加商品数量必须大于0!");
             return false;
         }
-        if (note.isEmpty()){
-            note=" ";
-        }
         return true;
     }
 
     /**
      * Good表字段值的合法校验
-     * @param name
-     * @param price
-     * @param number
-     * @param note
-     * @return
+     * @param name 商品名称
+     * @param price 商品单价
+     * @param number 商品数量
+     * @return 合法返回true
      */
-    public static boolean checkGood(String name, double price, int number, String note) {
+    public static boolean checkGood(String name, double price, int number) {
         if (name.isEmpty()){
             System.out.println("!商品名称不能为空!");
             return false;
@@ -127,18 +102,19 @@ public class ScannerInfo {
             System.out.println("!添加商品数量必须大于0!");
             return false;
         }
-        if (note.isEmpty()){
-            note=" ";
-        }
         return true;
     }
 
+    /**
+     * 输入整数
+     * @return 整数
+     */
     public static int inputInt() {
         Scanner input = new Scanner(System.in);
-        int number = 0;
+        int number;
         //校验规则:最高8位整数
         String regex="^[0-9]{1,8}$";
-        String string = "";
+        String string;
         while (true){
             System.out.println("请输入:");
             string = input.nextLine();

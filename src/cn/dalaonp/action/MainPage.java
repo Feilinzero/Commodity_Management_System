@@ -4,8 +4,8 @@ import cn.dalaonp.tools.ScannerInfo;
 
 /**
  * 商品管理系统主界面
- * author: oyzf
  * @author ouyangzhifei
+ * @version 1.0
  */
 public class MainPage {
     /**

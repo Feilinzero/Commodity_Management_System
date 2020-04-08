@@ -12,37 +12,13 @@ public final class Salesman {
     /**
      * 添加售货员信息
      * 根据姓名,密码
-     * @param saleId
-     * @param saleName
-     * @param salePassword
+     * @param saleId 售货员id
+     * @param saleName 售货员名称或用户名
+     * @param salePassword 售货员密码
      */
     public Salesman(int saleId, String saleName, String salePassword) {
         this.saleId=saleId;
         this.saleName = saleName;
-        this.salePassword = salePassword;
-    }
-
-    public int getSaleId() {
-        return saleId;
-    }
-
-    public void setSaleId(int saleId) {
-        this.saleId = saleId;
-    }
-
-    public String getSaleName() {
-        return saleName;
-    }
-
-    public void setSaleName(String saleName) {
-        this.saleName = saleName;
-    }
-
-    public String getSalePassword() {
-        return salePassword;
-    }
-
-    public void setSalePassword(String salePassword) {
         this.salePassword = salePassword;
     }
 
