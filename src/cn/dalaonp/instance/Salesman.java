@@ -2,47 +2,54 @@ package cn.dalaonp.instance;
 
 /**
  * 售货员表
+ * @author ouyangzhifei
  */
 public final class Salesman {
-    //主键,自动增长
-    private int SaleId;
-    //售货员姓名
-    private String SaleName;
-    //售货员登录密码
-    private String SalePassword;
+    private int saleId;
+    private String saleName;
+    private String salePassword;
 
     /**
      * 添加售货员信息
      * 根据姓名,密码
+     * @param saleId
      * @param saleName
      * @param salePassword
      */
-    public Salesman(String saleName, String salePassword) {
-        SaleName = saleName;
-        SalePassword = salePassword;
+    public Salesman(int saleId, String saleName, String salePassword) {
+        this.saleId=saleId;
+        this.saleName = saleName;
+        this.salePassword = salePassword;
     }
 
     public int getSaleId() {
-        return SaleId;
+        return saleId;
     }
 
     public void setSaleId(int saleId) {
-        SaleId = saleId;
+        this.saleId = saleId;
     }
 
     public String getSaleName() {
-        return SaleName;
+        return saleName;
     }
 
     public void setSaleName(String saleName) {
-        SaleName = saleName;
+        this.saleName = saleName;
     }
 
     public String getSalePassword() {
-        return SalePassword;
+        return salePassword;
     }
 
     public void setSalePassword(String salePassword) {
-        SalePassword = salePassword;
+        this.salePassword = salePassword;
+    }
+
+    @Override
+    public String toString() {
+        return "售货员Id=" + saleId +
+                ", 用户名='" + saleName + '\'' +
+                ", 密码='" + salePassword + '\'';
     }
 }

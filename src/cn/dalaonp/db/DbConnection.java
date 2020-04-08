@@ -9,9 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ *
  * 数据库连接
+ * @author ouyangzhifei
  */
-public final class DBConnection {
+
+public final class DbConnection {
     /**
      * 获取数据库连接对象
      * @return

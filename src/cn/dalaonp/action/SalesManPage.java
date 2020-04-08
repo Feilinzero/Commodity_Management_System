@@ -2,6 +2,7 @@ package cn.dalaonp.action;
 
 /**
  * 售货员管理界面
+ * @author ouyangzhifei
  */
 public class SalesManPage {
     /**

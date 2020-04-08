@@ -2,18 +2,26 @@ package cn.dalaonp.instance;
 
 /**
  * Good表实例
+ * @author ouyangzhifei
  */
 public final class Good {
-    //主键,自动增长
-    private int GoodId;
-    //商品名称
-    private String GoodName;
-    //商品单价
-    private double GoodPrice;
-    //商品库存
-    private int GoodNumber;
-    //备注,可为空
-    private String GoodNote;
+    private int goodId;
+    private String goodName;
+    private double goodPrice;
+    private int goodNumber;
+    private String goodNote;
+
+    /**
+     * 录入商品
+     * 录入商品的数量
+     * @param goodId
+     * @param goodNumber
+     */
+
+    public Good(int goodId, int goodNumber) {
+        this.goodId = goodId;
+        this.goodNumber = goodNumber;
+    }
 
     /**
      * 添加商品
@@ -23,10 +31,10 @@ public final class Good {
      * @param goodNumber 库存数量
      */
     public Good(String goodName, double goodPrice, int goodNumber, String goodNote) {
-        GoodName = goodName;
-        GoodPrice = goodPrice;
-        GoodNumber = goodNumber;
-        GoodNote = goodNote;
+        this.goodName = goodName;
+        this.goodPrice = goodPrice;
+        this.goodNumber = goodNumber;
+        this.goodNote = goodNote;
     }
 
     /**
@@ -36,8 +44,8 @@ public final class Good {
      * @param goodName
      */
     public Good(int goodId, String goodName) {
-        GoodId = goodId;
-        GoodName = goodName;
+        this.goodId = goodId;
+        this.goodName = goodName;
     }
 
     /**
@@ -48,61 +56,61 @@ public final class Good {
      */
 
     public Good(int goodId, double goodPrice) {
-        GoodId = goodId;
-        GoodPrice = goodPrice;
+        this.goodId = goodId;
+        this.goodPrice = goodPrice;
     }
 
     public Good(int goodId, String goodName, double goodPrice, int goodNumber, String goodNote) {
-        GoodId = goodId;
-        GoodName = goodName;
-        GoodPrice = goodPrice;
-        GoodNumber = goodNumber;
-        GoodNote = goodNote;
+        this.goodId = goodId;
+        this.goodName = goodName;
+        this.goodPrice = goodPrice;
+        this.goodNumber = goodNumber;
+        this.goodNote = goodNote;
     }
 
     @Override
     public String toString() {
-        return "\t" + GoodId + "\t" + GoodName + "\t" + GoodPrice +"\t"+ GoodNumber +
-                "\t" + GoodNote+ "";
+        return "\tid=" + goodId + "\t名称=" + goodName + "\t单价=" + goodPrice +"\t库存数量="+ goodNumber +
+                "\t备注=" + goodNote + "";
     }
 
     public int getGoodId() {
-        return GoodId;
+        return goodId;
     }
 
     public void setGoodId(int goodId) {
-        GoodId = goodId;
+        this.goodId = goodId;
     }
 
     public String getGoodName() {
-        return GoodName;
+        return goodName;
     }
 
     public void setGoodName(String goodName) {
-        GoodName = goodName;
+        this.goodName = goodName;
     }
 
     public double getGoodPrice() {
-        return GoodPrice;
+        return goodPrice;
     }
 
     public void setGoodPrice(double goodPrice) {
-        GoodPrice = goodPrice;
+        this.goodPrice = goodPrice;
     }
 
     public int getGoodNumber() {
-        return GoodNumber;
+        return goodNumber;
     }
 
     public void setGoodNumber(int goodNumber) {
-        GoodNumber = goodNumber;
+        this.goodNumber = goodNumber;
     }
 
     public String getGoodNote() {
-        return GoodNote;
+        return goodNote;
     }
 
     public void setGoodNote(String goodNote) {
-        GoodNote = goodNote;
+        this.goodNote = goodNote;
     }
 }
