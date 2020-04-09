@@ -1,8 +1,33 @@
 # Commodity_Management_System
 
-#### 介绍
-JavaSE和JDBC的基础应用--基于控制台实现的商品管理系统
-使用JavaSE和JDBC
+####  **介绍** 
+ **JavaSE** 和 **JDBC** 的基础应用--基于控制台实现的商品管理系统
 
-#### 软件架构
+####  **软件架构** 
+
+1. 使用 **JavaSE** 、 **JDBC** 结合 **SQL server** 数据库完成
+2. 整个项目简单分为三层开发， **Instance** 层、 **Dao** 层、 **Action** 层
+    *  **Instance** 层
+        数据库表的实体类管理，包含了数据库表的JavaBean实体类
+    *  **Dao** 层
+        实现sql数据库的连接，包含了对数据库的CURD（增删查改）操作
+    *  **Action** 层
+        数据显示层，同时对操作进行响应和调用dao层获取修改数据
+
+####  **目录** 
+
+*  _docs_ --放置项目相关文档
+*  _information_ --放置数据库表结构文件
+*  _libs_ --放置JDBC与数据库的相关依赖
+    * c3p0连接池
+    * mssql数据库驱动
+*  _src/cn.dalaonp_ --代码源文件
+    * action--显示层代码
+    * dao--dao层代码
+    * db--数据库连接对象
+    * instance--数据库表实例
+    * test--测试类
+    * tools--工具类
+     _c3p0-config.xml_ --c3p0连接池配置文件
+
 
